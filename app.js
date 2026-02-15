@@ -1,8 +1,10 @@
 import express from "express";
-
+import path from "node:path";
 const app = express();
 import flutesRouter from "./routes/flutes.js";
 
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 app.use("/flutes", flutesRouter);
 
 const PORT = 5173;
