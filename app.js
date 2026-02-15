@@ -1,8 +1,9 @@
 import express from "express";
 
 const app = express();
+import flutesRouter from "./routes/flutes.js";
 
-app.get("/", (req, res) => res.send("Hello world"));
+app.use("/flutes", flutesRouter);
 
 const PORT = 5173;
 app.listen(PORT, (error) => {
@@ -10,4 +11,9 @@ app.listen(PORT, (error) => {
     throw error;
   }
   console.log("Hello from express app");
+});
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send(err);
 });
