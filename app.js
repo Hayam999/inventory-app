@@ -3,6 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import process from "node:process";
 import flutesRouter from "./routes/flutes.js";
+import guitarsRouter from "./routes/guitars.js";
+import oudsRouter from "./routes/ouds.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,6 +15,8 @@ app.get("/", (req, res) => {
   res.render("index", { message: "Welcome to the insturments store" });
 });
 app.use("/flutes", flutesRouter);
+app.use("/guitars", guitarsRouter);
+app.use("/ouds", oudsRouter);
 
 const PORT = 3001;
 app.use((err, req, res, next) => {

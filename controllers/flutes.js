@@ -7,7 +7,7 @@ async function getFlutesController(req, res) {
     res.status(404).send("Flutes not found");
     return;
   }
-  res.send(`flutes: ${flutes}`);
+  res.send(`Flutes: ${flutes}`);
 }
 
 export { getFlutesController };
