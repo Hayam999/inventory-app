@@ -1,5 +1,2 @@
-TODO create homepage ui
-TODO set up guitars route
-TODO set up flutes route
-TODO set up ouds route
-TODO fill database with required data
+------------------ 16 Feb 2026 ------------------
+TODO add index.ejs and set up the app to render it correctly
