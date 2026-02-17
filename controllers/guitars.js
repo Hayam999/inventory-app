@@ -1,12 +1,17 @@
 import { getAllGuitars } from "../db/queries.js";
 
-async function getGuitarsController(req, res) {
-  const guitars = await getAllGuitars();
-  if (!guitars) {
-    res.status(404).send("Guitars not found");
-    return;
+async function getGuitarsController(req, res, next) {
+  try {
+    const guitars = await getAllGuitars();
+    if (!guitars || guitars.length === 0) {
+      res.status(404).send("Guitars not found");
+      return;
+    }
+    res.locals.instruments = guitars.map((g) => g.name);
+    next();
+  } catch (err) {
+    next(err);
   }
-  res.send(`Guitars: ${guitars}`);
 }
 
 export { getGuitarsController };

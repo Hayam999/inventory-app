@@ -1,0 +1,15 @@
+<!-- instrument.ejs -->
+<html>
+    <body>
+        <h2>Types of <%= instrumentName %></h2>
+
+        <ul>
+            <% locals.instruments.map((instrument) => { %>
+                <li><%= instrument %></li>
+                <div><button>Delete</button> <button>Update</button></div>
+            <% }) %>
+        </ul>
+
+        <button>Add <%= instrumentName %> type</button>
+    </body>
+</html>
