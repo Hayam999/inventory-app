@@ -1,15 +1,33 @@
-<!-- instrument.ejs -->
+<!DOCTYPE html>
 <html>
-    <body>
-        <h2>Types of <%= instrumentName %></h2>
+<head>
+    <meta charset="UTF-8">
+    <title>Instrument Types</title>
+</head>
+<body>
 
-        <ul>
-            <% locals.instruments.map((instrument) => { %>
-                <li><%= instrument %></li>
-                <div><button>Delete</button> <button>Update</button></div>
-            <% }) %>
-        </ul>
+    <h2>Types of <%= instrumentName %></h2>
 
-        <button>Add <%= instrumentName %> type</button>
-    </body>
+    <ul>
+        <% locals.instruments.forEach((instrument) => { %>
+            <li>
+                <span><%= instrument %></span>
+                <div>
+                    <button type="button" onclick="deleteIns('<%= instrument %>')">
+                        Delete
+                    </button>
+                    <button type="button" onclick="updateIns('<%= instrument %>')">
+                        Update
+                    </button>
+                </div>
+            </li>
+        <% }) %>
+    </ul>
+
+    <button type="button" onclick="addIns('<%= instrumentName %>')">
+        Add <%= instrumentName %> type
+    </button>
+
+
+</body>
 </html>
