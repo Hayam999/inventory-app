@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   getFlutesController,
   deleteFluteController,
+  updateFluteController,
 } from "../controllers/flutes.js";
 const flutesRouter = Router();
 
@@ -15,5 +16,7 @@ flutesRouter.get("/", getFlutesController, renderFlutes);
 flutesRouter.post("/delete/:name", deleteFluteController, (req, res) => {
   res.redirect("/flutes");
 });
-
+flutesRouter.put("/update/:name", updateFluteController, (req, res) => {
+  res.redirect("/flutes");
+});
 export default flutesRouter;

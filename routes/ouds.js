@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { getOudsController, deleteOudController } from "../controllers/ouds.js";
+import {
+  getOudsController,
+  deleteOudController,
+  updateOudController,
+} from "../controllers/ouds.js";
 const oudsRouter = Router();
 
 oudsRouter.get("/", getOudsController, (req, res) => {
@@ -10,4 +14,7 @@ oudsRouter.post("/delete/:name", deleteOudController, (req, res) => {
   res.redirect("/ouds");
 });
 
+oudsRouter.put("/update/:name", updateOudController, (req, res) => {
+  res.redirect("/ouds");
+});
 export default oudsRouter;

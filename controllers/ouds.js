@@ -1,4 +1,4 @@
-import { getAllOuds, deleteIns } from "../db/queries.js";
+import { getAllOuds, deleteIns, updateIns } from "../db/queries.js";
 
 async function getOudsController(req, res, next) {
   try {
@@ -26,4 +26,17 @@ async function deleteOudController(req, res, next) {
   }
 }
 
-export { getOudsController, deleteOudController };
+async function updateOudController(req, res, next) {
+  try {
+    const { name } = req.params;
+    const newName = req.body.newName;
+
+    await updateIns(newName, name, "ouds");
+    next();
+  } catch (err) {
+    console.error("Failed to update the oud: ", err);
+    throw err;
+  }
+}
+
+export { getOudsController, deleteOudController, updateOudController };

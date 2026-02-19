@@ -1,4 +1,4 @@
-import { getAllGuitars, deleteIns } from "../db/queries.js";
+import { getAllGuitars, deleteIns, updateIns } from "../db/queries.js";
 
 async function getGuitarsController(req, res, next) {
   try {
@@ -25,4 +25,17 @@ async function deleteGuitarController(req, res, next) {
   }
 }
 
-export { getGuitarsController, deleteGuitarController };
+async function updateGuitarController(req, res, next) {
+  try {
+    const { name } = req.params;
+    const newName = req.body.newName;
+
+    await updateIns(newName, name, "guitars");
+    next();
+  } catch (err) {
+    console.error("Failed to update the guitar: ", err);
+    throw err;
+  }
+}
+
+export { getGuitarsController, deleteGuitarController, updateGuitarController };

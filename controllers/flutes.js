@@ -1,5 +1,5 @@
 import { getAllFlutes } from "../db/queries.js";
-import { deleteIns } from "../db/queries.js";
+import { deleteIns, updateIns } from "../db/queries.js";
 
 async function getFlutesController(req, res, next) {
   try {
@@ -27,4 +27,17 @@ async function deleteFluteController(req, res, next) {
   }
 }
 
-export { getFlutesController, deleteFluteController };
+async function updateFluteController(req, res, next) {
+  try {
+    const { name } = req.params;
+    const newName = req.body.newName;
+
+    await updateIns(newName, name, "flutes");
+    next();
+  } catch (err) {
+    console.error("Failed to update the flute: ", err);
+    throw err;
+  }
+}
+
+export { getFlutesController, deleteFluteController, updateFluteController };

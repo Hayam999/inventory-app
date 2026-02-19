@@ -38,6 +38,7 @@ async function updateIns(newName, oldName, tableName) {
       `UPDATE ${tableName} SET name = $1 WHERE name = $2`,
       [newName, oldName],
     );
+
     return result;
   } catch (err) {
     console.error(`Update failed: `, err);
