@@ -18,17 +18,20 @@
                         <button type="submit">Delete</button>
                         
                     </form>
-                    <button type="button" onclick="updateIns('<%= instrument %>')">
-                        Update
-                    </button>
+                    <form action="/<%= instrumentName %>s/update/<%= instrument %>?_method=PUT" method="POST">
+  <input type="text" name="newName" placeholder="Enter new name" id="instrumentName">
+  <button type="submit">Update</button>
+</form>
+                    
                 </div>
             </li>
         <% }) %>
     </ul>
-
-    <button type="button" onclick="addIns('<%= instrumentName %>')">
-        Add <%= instrumentName %> type
-    </button>
+   <form action="/<%= instrumentName %>s/add" method="POST">
+  <input type="text" name="typeName" placeholder="Enter type name">
+  <button type="submit">Add <%= instrumentName %> type</button>
+</form>
+    
 
 
 </body>

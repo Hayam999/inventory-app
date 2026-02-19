@@ -1,4 +1,4 @@
-import { getAllGuitars } from "../db/queries.js";
+import { getAllGuitars, deleteIns } from "../db/queries.js";
 
 async function getGuitarsController(req, res, next) {
   try {
@@ -14,4 +14,15 @@ async function getGuitarsController(req, res, next) {
   }
 }
 
-export { getGuitarsController };
+async function deleteGuitarController(req, res, next) {
+  try {
+    const { name } = req.params;
+    await deleteIns(name, "guitars");
+    next();
+  } catch (err) {
+    console.error("Failed to delete the guitar: ", err);
+    throw err;
+  }
+}
+
+export { getGuitarsController, deleteGuitarController };

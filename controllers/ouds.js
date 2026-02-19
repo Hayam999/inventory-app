@@ -1,4 +1,4 @@
-import { getAllOuds } from "../db/queries.js";
+import { getAllOuds, deleteIns } from "../db/queries.js";
 
 async function getOudsController(req, res, next) {
   try {
@@ -15,4 +15,15 @@ async function getOudsController(req, res, next) {
   }
 }
 
-export { getOudsController };
+async function deleteOudController(req, res, next) {
+  try {
+    const { name } = req.params;
+    await deleteIns(name, "ouds");
+    next();
+  } catch (err) {
+    console.error("Failed to delete the Oud: ", err);
+    throw err;
+  }
+}
+
+export { getOudsController, deleteOudController };

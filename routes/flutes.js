@@ -12,6 +12,8 @@ const renderFlutes = (req, res) => {
 };
 
 flutesRouter.get("/", getFlutesController, renderFlutes);
-flutesRouter.delete("/delete/:name", deleteFluteController, renderFlutes);
+flutesRouter.post("/delete/:name", deleteFluteController, (req, res) => {
+  res.redirect("/flutes");
+});
 
 export default flutesRouter;
