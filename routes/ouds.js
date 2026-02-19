@@ -3,6 +3,7 @@ import {
   getOudsController,
   deleteOudController,
   updateOudController,
+  addOudController,
 } from "../controllers/ouds.js";
 const oudsRouter = Router();
 
@@ -15,6 +16,10 @@ oudsRouter.post("/delete/:name", deleteOudController, (req, res) => {
 });
 
 oudsRouter.put("/update/:name", updateOudController, (req, res) => {
+  res.redirect("/ouds");
+});
+
+oudsRouter.post("/add", addOudController, (req, res) => {
   res.redirect("/ouds");
 });
 export default oudsRouter;

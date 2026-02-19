@@ -1,4 +1,4 @@
-import { getAllGuitars, deleteIns, updateIns } from "../db/queries.js";
+import { getAllGuitars, deleteIns, updateIns, addIns } from "../db/queries.js";
 
 async function getGuitarsController(req, res, next) {
   try {
@@ -38,4 +38,20 @@ async function updateGuitarController(req, res, next) {
   }
 }
 
-export { getGuitarsController, deleteGuitarController, updateGuitarController };
+async function addGuitarController(req, res, next) {
+  try {
+    const name = req.body.typeName;
+
+    await addIns(name, "guitars");
+    next();
+  } catch (err) {
+    console.error("Failed to add the guitar: ", err);
+    throw err;
+  }
+}
+export {
+  getGuitarsController,
+  deleteGuitarController,
+  updateGuitarController,
+  addGuitarController,
+};

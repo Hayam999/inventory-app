@@ -3,6 +3,7 @@ import {
   getGuitarsController,
   deleteGuitarController,
   updateGuitarController,
+  addGuitarController,
 } from "../controllers/guitars.js";
 const guitarsRouter = Router();
 
@@ -14,6 +15,9 @@ guitarsRouter.post("/delete/:name", deleteGuitarController, (req, res) => {
 });
 
 guitarsRouter.put("/update/:name", updateGuitarController, (req, res) => {
+  res.redirect("/guitars");
+});
+guitarsRouter.post("/add", addGuitarController, (req, res) => {
   res.redirect("/guitars");
 });
 

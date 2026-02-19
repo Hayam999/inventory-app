@@ -1,5 +1,4 @@
-import { getAllFlutes } from "../db/queries.js";
-import { deleteIns, updateIns } from "../db/queries.js";
+import { addIns, getAllFlutes, deleteIns, updateIns } from "../db/queries.js";
 
 async function getFlutesController(req, res, next) {
   try {
@@ -39,5 +38,21 @@ async function updateFluteController(req, res, next) {
     throw err;
   }
 }
+async function addFluteController(req, res, next) {
+  try {
+    const name = req.body.typeName;
 
-export { getFlutesController, deleteFluteController, updateFluteController };
+    await addIns(name, "flutes");
+    next();
+  } catch (err) {
+    console.error("Failed to add the flute: ", err);
+    throw err;
+  }
+}
+
+export {
+  getFlutesController,
+  deleteFluteController,
+  updateFluteController,
+  addFluteController,
+};
