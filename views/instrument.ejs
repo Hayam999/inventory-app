@@ -13,9 +13,11 @@
             <li>
                 <span><%= instrument %></span>
                 <div>
-                    <button type="button" onclick="deleteIns('<%= instrument %>')">
-                        Delete
-                    </button>
+                    <form  action="/<%= instrumentName %>s/delete/<%= instrument %>" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit">Delete</button>
+                        
+                    </form>
                     <button type="button" onclick="updateIns('<%= instrument %>')">
                         Update
                     </button>

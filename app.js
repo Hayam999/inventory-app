@@ -5,10 +5,14 @@ import process from "node:process";
 import flutesRouter from "./routes/flutes.js";
 import guitarsRouter from "./routes/guitars.js";
 import oudsRouter from "./routes/ouds.js";
+import methodOverride from "method-override";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {

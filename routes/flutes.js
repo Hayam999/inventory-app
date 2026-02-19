@@ -1,10 +1,17 @@
 import { Router } from "express";
-import { getFlutesController } from "../controllers/flutes.js";
-
+import {
+  getFlutesController,
+  deleteFluteController,
+} from "../controllers/flutes.js";
 const flutesRouter = Router();
 
-flutesRouter.get("/", getFlutesController, (req, res) => {
-  res.render("instrument", { instrumentName: "Flute" });
-});
+const renderFlutes = (req, res) => {
+  res.render("instrument", {
+    instrumentName: "flute",
+  });
+};
+
+flutesRouter.get("/", getFlutesController, renderFlutes);
+flutesRouter.delete("/delete/:name", deleteFluteController, renderFlutes);
 
 export default flutesRouter;
